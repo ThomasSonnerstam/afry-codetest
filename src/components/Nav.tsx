@@ -9,9 +9,22 @@ const Nav = () => {
   return (
     <AppBar position="static" sx={{ mb: 3 }}>
       <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 0, mr: 4 }}>
-          Afry Code Test
-        </Typography>
+        <Box sx={{ flexGrow: 0, mr: 4 }}>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ display: { xs: "none", sm: "block" } }}
+          >
+            Afry Code Test
+          </Typography>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ display: { xs: "block", sm: "none" } }}
+          >
+            ACT
+          </Typography>
+        </Box>
 
         <Box sx={{ display: "flex", gap: 1 }}>
           <Button

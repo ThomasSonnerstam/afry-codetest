@@ -54,34 +54,46 @@ export default function UnassignedPage() {
             {unassignedQuery.data?.map((p, index) => (
               <Box key={p.id}>
                 <ListItem>
-                  <ListItemText
-                    primary={p.name}
-                    secondary="Not assigned to any company"
-                  />
-                  <FormControl sx={{ minWidth: 200 }}>
-                    <InputLabel>Assign to company</InputLabel>
-                    <Select
-                      defaultValue=""
-                      label="Assign to company"
-                      onChange={(e) => {
-                        const cid = e.target.value;
-                        if (cid)
-                          assignMutation.mutate({
-                            personId: p.id,
-                            companyId: cid,
-                          });
-                      }}
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: { xs: "column", sm: "row" },
+                      gap: 2,
+                      alignItems: { xs: "stretch", sm: "center" },
+                      width: "100%",
+                    }}
+                  >
+                    <ListItemText
+                      primary={p.name}
+                      secondary="Not assigned to any company"
+                    />
+                    <FormControl
+                      sx={{ minWidth: 200, width: { xs: "100%", sm: "auto" } }}
                     >
-                      <MenuItem value="" disabled>
-                        Choose a company…
-                      </MenuItem>
-                      {companiesQuery.data?.map((c) => (
-                        <MenuItem key={c.id} value={c.id}>
-                          {c.name}
+                      <InputLabel>Assign to company</InputLabel>
+                      <Select
+                        defaultValue=""
+                        label="Assign to company"
+                        onChange={(e) => {
+                          const cid = e.target.value;
+                          if (cid)
+                            assignMutation.mutate({
+                              personId: p.id,
+                              companyId: cid,
+                            });
+                        }}
+                      >
+                        <MenuItem value="" disabled>
+                          Choose a company…
                         </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
+                        {companiesQuery.data?.map((c) => (
+                          <MenuItem key={c.id} value={c.id}>
+                            {c.name}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </Box>
                 </ListItem>
                 {index < (unassignedQuery.data?.length ?? 0) - 1 && <Divider />}
               </Box>

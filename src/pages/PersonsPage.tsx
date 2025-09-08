@@ -55,7 +55,12 @@ export default function PersonsPage() {
         <Box
           component="form"
           onSubmit={handleSubmit}
-          sx={{ display: "flex", gap: 2, alignItems: "flex-end" }}
+          sx={{
+            display: "flex",
+            gap: 2,
+            alignItems: { xs: "stretch", sm: "flex-end" },
+            flexDirection: { xs: "column", sm: "row" },
+          }}
         >
           <TextField
             label="Name"
@@ -63,8 +68,11 @@ export default function PersonsPage() {
             onChange={(e) => setName(e.target.value)}
             required
             sx={{ flexGrow: 1 }}
+            fullWidth
           />
-          <FormControl sx={{ minWidth: 200 }}>
+          <FormControl
+            sx={{ minWidth: 200, width: { xs: "100%", sm: "auto" } }}
+          >
             <InputLabel>Company</InputLabel>
             <Select
               value={companyId}
@@ -83,7 +91,11 @@ export default function PersonsPage() {
             type="submit"
             variant="contained"
             disabled={createPersonMutation.isPending}
-            sx={{ alignSelf: "center" }}
+            sx={{
+              alignSelf: { sm: "center" },
+              width: { xs: "100%", sm: "300px" },
+              height: "56px",
+            }}
           >
             Add Person
           </Button>

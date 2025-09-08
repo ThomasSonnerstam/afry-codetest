@@ -98,7 +98,12 @@ export default function CompaniesPage() {
         <Box
           component="form"
           onSubmit={handleSubmit}
-          sx={{ display: "flex", gap: 2, alignItems: "flex-end" }}
+          sx={{
+            display: "flex",
+            gap: 2,
+            alignItems: { xs: "stretch", sm: "flex-end" },
+            flexDirection: { xs: "column", sm: "row" },
+          }}
         >
           <TextField
             label="Company Name"
@@ -106,12 +111,17 @@ export default function CompaniesPage() {
             onChange={(e) => setName(e.target.value)}
             required
             sx={{ flexGrow: 1 }}
+            fullWidth
           />
           <Button
             type="submit"
             variant="contained"
             disabled={createCompanyMutation.isPending}
-            sx={{ alignSelf: "center" }}
+            sx={{
+              alignSelf: { sm: "center" },
+              width: { xs: "100%", sm: "300px" },
+              height: "56px",
+            }}
           >
             Add Company
           </Button>
