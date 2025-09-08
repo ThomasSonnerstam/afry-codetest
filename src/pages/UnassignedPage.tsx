@@ -70,8 +70,12 @@ export default function UnassignedPage() {
                     <FormControl
                       sx={{ minWidth: 200, width: { xs: "100%", sm: "auto" } }}
                     >
-                      <InputLabel>Assign to company</InputLabel>
+                      <InputLabel id={`assign-company-label-${p.id}`}>
+                        Assign to company
+                      </InputLabel>
                       <Select
+                        labelId={`assign-company-label-${p.id}`}
+                        id={`assign-company-select-${p.id}`}
                         defaultValue=""
                         label="Assign to company"
                         onChange={(e) => {

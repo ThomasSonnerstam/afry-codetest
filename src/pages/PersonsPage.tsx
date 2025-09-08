@@ -73,8 +73,10 @@ export default function PersonsPage() {
           <FormControl
             sx={{ minWidth: 200, width: { xs: "100%", sm: "auto" } }}
           >
-            <InputLabel>Company</InputLabel>
+            <InputLabel id="person-company-label">Company</InputLabel>
             <Select
+              labelId="person-company-label"
+              id="person-company-select"
               value={companyId}
               label="Company"
               onChange={(e) => setCompanyId(e.target.value)}

@@ -134,8 +134,10 @@ export default function CompaniesPage() {
 
       <Paper sx={{ p: 3, mb: 3 }}>
         <FormControl fullWidth>
-          <InputLabel>Select a company</InputLabel>
+          <InputLabel id="companies-select-label">Select a company</InputLabel>
           <Select
+            labelId="companies-select-label"
+            id="companies-select"
             value={selectedCompanyId}
             label="Select a company"
             onChange={(e) => setSelectedCompanyId(e.target.value)}
@@ -197,10 +199,15 @@ export default function CompaniesPage() {
         </>
       )}
 
-      <Dialog open={deleteDialogOpen} onClose={handleCancelDelete}>
-        <DialogTitle>Confirm Removal</DialogTitle>
+      <Dialog
+        open={deleteDialogOpen}
+        onClose={handleCancelDelete}
+        aria-labelledby="confirm-remove-title"
+        aria-describedby="confirm-remove-description"
+      >
+        <DialogTitle id="confirm-remove-title">Confirm Removal</DialogTitle>
         <DialogContent>
-          <DialogContentText>
+          <DialogContentText id="confirm-remove-description">
             Are you sure you want to remove{" "}
             <strong>{personToDelete?.name}</strong> from{" "}
             <strong>{selectedCompanyName}</strong>?
